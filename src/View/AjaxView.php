@@ -9,10 +9,10 @@
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
- * @since         3.0
+ * @since         3.0.4
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace Cake\View;
+namespace App\View;
 
 use Cake\Event\EventManager;
 use Cake\Network\Request;
@@ -20,36 +20,30 @@ use Cake\Network\Response;
 
 /**
  * A view class that is used for AJAX responses.
- * Currently only switches the default layout and sets the response type - which just maps to
- * text/html by default.
+ * Currently only switches the default layout and sets the response type -
+ * which just maps to text/html by default.
  */
-class AjaxView extends View
+class AjaxView extends AppView
 {
 
     /**
+     * The name of the layout file to render the view inside of. The name
+     * specified is the filename of the layout in /src/Template/Layout without
+     * the .ctp extension.
      *
      * @var string
      */
     public $layout = 'ajax';
 
     /**
-     * Constructor
+     * Initialization hook method.
      *
-     * @param \Cake\Network\Request $request The request object.
-     * @param \Cake\Network\Response $response The response object.
-     * @param \Cake\Event\EventManager $eventManager Event manager object.
-     * @param array $viewOptions View options.
+     * @return void
      */
-    public function __construct(
-        Request $request = null,
-        Response $response = null,
-        EventManager $eventManager = null,
-        array $viewOptions = []
-    ) {
-        parent::__construct($request, $response, $eventManager, $viewOptions);
+    public function initialize()
+    {
+        parent::initialize();
 
-        if ($response && $response instanceof Response) {
-            $response->type('ajax');
-        }
+        $this->response->type('ajax');
     }
 }
