@@ -73,7 +73,6 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                
                                 <?= $this->Html->link("<i class='fa fa-gears'></i>", ['controller' => 'Users' ,'action' => 'configuracion'], ['escapeTitle' => false]) ?>
                             </li>
                         </ul>
@@ -94,36 +93,36 @@
                 </div>
               </div>
 
-              <form action="#" method="get" class="sidebar-form">
+              <?php echo $this->Form->create(null, ['url' => ['controller' => 'Pages' ,'action' => 'buscar'], 'class' => 'sidebar-form' ]); ?>
+
+              <!-- <form action="#" method="get" class=""> -->
                 <div class="input-group">
                   <input type="text" name="q" class="form-control" placeholder="Buscar...">
                   <span class="input-group-btn">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
                   </span>
                 </div>
-              </form>
+              <!-- </form> -->
+
+              <?php echo $this->Form->end(); ?>
 
               <ul class="sidebar-menu">
                 <li class="header">NAVEGACIÓN</li>
                 
                 <li><?= $this->Html->link("<i class='fa fa-tachometer'></i> <span>Dashboard</span>", ['controller' => 'Pages' ,'action' => 'dashboard'], ['escapeTitle' => false]) ?></li>
 
-                <!-- <li class="treeview active">
+                <li class="treeview">
                   <a href="#">
-                    <i class="fa fa-home"></i> <span>Negocios</span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li> <?= $this->Html->link("<i class='fa fa-circle-o'></i> Nuevo negocio", ['controller' => 'Negocios' ,'action' => 'add'], ['escapeTitle' => false]) ?> </li>
-                    
-                    <li>
-                      <?= $this->Html->link("<i class='fa fa-circle-o'></i> Listado de negocios", ['controller' => 'Negocios', 'action' => 'index'], ['escapeTitle' => false]) ?>
-                    </li>
+                    <li> <?= $this->Html->link("<i class='fa fa-circle-o'></i> Nuevo usuario", ['controller' => 'Users' ,'action' => 'agregar'], ['escapeTitle' => false]) ?> </li>
+                    <li><?= $this->Html->link("<i class='fa fa-circle-o'></i> Listado de usuarios", ['controller' => 'Users', 'action' => 'index'],['escapeTitle' => false]) ?></li>
                   </ul>
-                </li> -->
+                </li>
 
                 <!-- <li class="header">LABELS</li> -->
                 <li>
-                  <!-- <a href="#"><i class="fa fa-close text-red"></i> <span>Cerrar sesión</span></a> -->
                   <?php echo $this->Html->link(
                       '<i class="fa fa-close text-red"></i> <span>Cerrar sesión</span>',
                       ['controller' => 'Users', 'action' => 'logout'],
@@ -152,10 +151,10 @@
           </div>
 
           <footer class="main-footer">
+            <strong><?php echo date('Y'); ?> - <a href="#">Cakephp Bootstrap</a>.</strong>
             <div class="pull-right hidden-xs">
               <a href="http://syloper.com/" target="_blank"><b>Syloper</b></a>
             </div>
-            <strong>Copyright &copy; 2016 <a href="#">Aimant</a>.</strong> Todos los derechos reservados.
           </footer>
 
     </div>

@@ -4727,3 +4727,6 @@ table.text-center th {
     white-space: normal!important;
   }
 }
+
+.gllpMap{ width: 500px; height: 250px; }
+.pagination{position: relative !important; display: table !important; margin: 45px auto 20px !important;}

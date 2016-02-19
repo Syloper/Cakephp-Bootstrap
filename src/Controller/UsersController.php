@@ -7,28 +7,28 @@ use Cake\Mailer\Email;
 
 class UsersController extends AppController{
 
+
+    public $paginate = [
+        'limit' => 10,
+        'order' => [
+            'Users.email' => 'asc'
+        ]
+    ];
+
     public function index(){
-
         $users = $this->paginate($this->Users);
-
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
-
     }
     
-    public function view($id = null){
-
-        $user = $this->Users->get($id, [
-            'contain' => []
-        ]);
-
+    public function ver($id = null){
+        $user = $this->Users->get($id);
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
     }
 
 
     public function agregar(){
-
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -44,7 +44,7 @@ class UsersController extends AppController{
     }
 
   
-    public function edit($id = null){
+    public function editar($id = null){
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -61,7 +61,7 @@ class UsersController extends AppController{
         $this->set('_serialize', ['user']);
     }
 
-    public function delete($id = null){
+    public function eliminar($id = null){
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
@@ -70,6 +70,10 @@ class UsersController extends AppController{
             $this->Flash->error(__('Hubo un error al eliminar. Por favor intenta nuevamente.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function buscar(){
+        // Busqueda dentro de usuarios
     }
 
     public function configuracion(){

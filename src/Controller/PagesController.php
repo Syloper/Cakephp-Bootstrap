@@ -35,6 +35,11 @@ class PagesController extends AppController{
     }
 
     public function dashboard(){
-        
+        // Logica de pantalla de inicio
     }
+
+    public function buscar(){
+        // Logica de buscador 
+    }
+
 }
