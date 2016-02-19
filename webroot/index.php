@@ -14,6 +14,13 @@
  * @since         0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
+if (is_file(dirname(__DIR__) . '/instalador/instalador.ins')) {
+	// En la primera vez que se inicia, se carga un instalador.
+	include_once dirname(__DIR__) . "/instalador/index.php";
+	return;
+}
+
 // for built-in server
 if (php_sapi_name() === 'cli-server') {
     $_SERVER['PHP_SELF'] = '/' . basename(__FILE__);
