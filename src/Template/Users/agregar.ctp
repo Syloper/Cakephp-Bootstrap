@@ -6,9 +6,9 @@
     <?= $this->Form->create($user, ['class' => 'form-horizontal', 'data-parsley-validate' => '', 'type' => 'file' ]) ?>
         <div class="box-body">
             <div class="form-group">
-                <label for="nombre" class="col-sm-2 control-label">Email</label>
+                <label for="email" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                    <?php echo $this->Form->input('nombre', ['required' => true, 'class' => 'form-control', 'label' => false]); ?>
+                    <?php echo $this->Form->input('email', ['required' => true, 'class' => 'form-control', 'label' => false]); ?>
                 </div>
             </div>
             

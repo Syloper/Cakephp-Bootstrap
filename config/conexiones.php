@@ -1,1 +1,1 @@
-<?php $conexiones = array("host" => "localhost", "user" => "root", "pass" => "", "base" => "prueba1"); ?>
+<?php $conexiones = array("host" => "localhost", "user" => "root", "pass" => "", "base" => "bootstrap"); ?>

@@ -977,3 +977,143 @@ Stack Trace:
 #1 {main}
 
 
+2016-02-19 19:37:19 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:39:40 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users/agregar
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:39:43 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users/agregar
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:42:56 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:43:28 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:43:47 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users/agregar
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:43:56 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users/agregar
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:44:04 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users/agregar
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:44:37 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users/agregar
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-19 19:44:46 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Plugins could not be found.
+Exception Attributes: array (
+  'class' => 'Plugins',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /Cakephp-Bootstrap/plugins/latlon-picker/jquery-gmaps-latlon-picker.js
+Referer URL: http://localhost/Cakephp-Bootstrap/users
+Stack Trace:
+#0 C:\xampp\htdocs\Cakephp-Bootstrap\webroot\index.php(44): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+

@@ -31,6 +31,7 @@ class UsersController extends AppController{
     public function agregar(){
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+            //debug($this->request->data);exit();
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('El usuario se guardo con exito.'));
