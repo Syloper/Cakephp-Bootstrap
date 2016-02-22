@@ -13,14 +13,14 @@
         
         <?= $this->Html->css('bootstrap.min.css') ?>
         <?= $this->Html->css('AdminLTE.css') ?>
-        <?= $this->Html->css('skins/skin-purple.min.css') ?>
+        <?= $this->Html->css('skins/'.COLOR.'.min') ?>
         <?= $this->Html->css('/plugins/iCheck/square/blue.css') ?>
 
         <?= $this->fetch('meta') ?>
         <?= $this->fetch('css') ?>
 
     </head>
-    <body class="hold-transition login-page">
+    <body class="hold-transition <?= COLOR ?> login-page">
     
     <?= $this->fetch('content') ?>
 

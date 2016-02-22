@@ -1,3 +1,4 @@
+<?php $usuario = $this->request->session()->read('Auth.User'); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +23,7 @@
       <?= $this->Html->css('/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>
       <?= $this->Html->css('/plugins/select2/select2.min.css') ?>
       <?= $this->Html->css('AdminLTE.css') ?>
-      <?= $this->Html->css('skins/skin-purple.min') ?>
+      <?= $this->Html->css('skins/'.COLOR.'.min') ?>
 
       <?= $this->Html->script('/plugins/jQuery/jQuery-2.1.4.min.js') ?>
       <?= $this->Html->script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') ?>
@@ -52,7 +53,7 @@
       <?= $this->fetch('css') ?>
 
     </head>
-    <body class="hold-transition skin-purple sidebar-mini">
+    <body class="hold-transition <?= COLOR ?> sidebar-mini">
         
         <div class="wrapper">
 
@@ -60,9 +61,9 @@
                 <!-- Logo -->
                 <a href="./" class="logo">
                     <!-- mini logo 50x50 -->
-                    <span class="logo-mini"><b>CB</b></span>
+                    <span class="logo-mini"><b><?php echo substr(APPNAME, 0, 1); ?></b></span>
                     <!-- logo regular -->
-                    <span class="logo-lg">Cakephp Bootstrap</span>
+                    <span class="logo-lg"><?= APPNAME ?></span>
                 </a>
 
                 <nav class="navbar navbar-static-top" role="navigation">
@@ -86,10 +87,10 @@
 
               <div class="user-panel">
                 <div class="pull-left image">
-                  <?php echo $this->Html->image('lemmy.jpg', ['alt' => 'Imagen de usuario', 'class' => 'img-circle']); ?>
+                  <?php echo $this->Html->image($usuario['imagen'], ['alt' => 'Imagen de usuario', 'class' => 'img-circle']); ?>
                 </div>
                 <div class="pull-left info">
-                  <p>Lemmy Kilmister</p>
+                  <p><?= $usuario['nombre'] ?> <?= $usuario['apellido'] ?></p>
                 </div>
               </div>
 
@@ -151,7 +152,7 @@
           </div>
 
           <footer class="main-footer">
-            <strong><?php echo date('Y'); ?> - <a href="#">Cakephp Bootstrap</a>.</strong>
+            <strong><?php echo date('Y'); ?> - <a href="#"><?= APPNAME ?></a>.</strong>
             <div class="pull-right hidden-xs">
               <a href="http://syloper.com/" target="_blank"><b>Syloper</b></a>
             </div>
