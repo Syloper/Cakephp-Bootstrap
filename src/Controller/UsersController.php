@@ -31,7 +31,34 @@ class UsersController extends AppController{
     public function agregar(){
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            //debug($this->request->data);exit();
+            
+            if(!empty($this->request->data['imagen']['name'])){
+                
+                if($this->request->data['imagen']['type'] == ('image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif')){
+                    
+                    $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                    
+                    $ext = substr(strtolower(strrchr($this->request->data['imagen']['name'], '.')), 1);
+                    $nuevoNombre = uniqid();
+
+                    if($this->request->data['imagen']['type'] === 'image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif'){
+                        if(move_uploaded_file($this->request->data['imagen']['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
+                            $this->request->data['imagen'] = $nuevoNombre.'.'.$ext;
+                        }
+                    }else{
+                        $this->Flash->error(__('Error, al subir imagen. Por favor intentá nuevamente.'));
+                        return $this->redirect(['action' => 'agregar']);
+                    }
+
+                }else{
+                    $this->Flash->error(__('El archivo subido para logo no es un formato de imagen aceptado. Por favor, intentá nuevamente.'));
+                    return $this->redirect(['action' => 'agregar']);
+                }
+            }
+
+            $data = $this->request->data;
+
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('El usuario se guardo con exito.'));
@@ -46,10 +73,42 @@ class UsersController extends AppController{
 
   
     public function editar($id = null){
-        $user = $this->Users->get($id, [
-            'contain' => []
-        ]);
+        $user = $this->Users->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if(empty($this->request->data['imagen']['name'])){
+                
+                if($user->imagen != ''){
+                    $this->request->data['imagen'] = $user->imagen;
+                }
+
+            }else{
+                                       
+                if($this->request->data['imagen']['type'] == ('image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif')){
+                    
+                    $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                    
+                    $ext = substr(strtolower(strrchr($this->request->data['imagen']['name'], '.')), 1);
+                    $nuevoNombre = uniqid();
+
+                    if($this->request->data['imagen']['type'] === 'image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif'){
+                        if(move_uploaded_file($this->request->data['imagen']['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
+                            $this->request->data['imagen'] = $nuevoNombre.'.'.$ext;
+                            unlink($destino.$user->imagen);
+                        }
+                    }else{
+                        $this->Flash->error(__('Error, al subir imagen. Por favor intentá nuevamente.'));
+                        return $this->redirect(['action' => 'add']);
+                    }
+
+
+                }else{
+                    $this->Flash->error(__('El archivo subido para logo no es un formato de imagen aceptado. Por favor, intentá nuevamente.'));
+                    return $this->redirect(['action' => 'add']);
+                }
+            }
+
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('El usuario se edito con exito.'));
@@ -80,14 +139,69 @@ class UsersController extends AppController{
     public function configuracion(){
 
         $user_data = $this->Users->get($this->Auth->user()['id']);
-        if($this->request->is('post')){
+        
+
+        /*debug($user_data);
+        debug($user_data->imagen);
+        exit();*/
+
+        if($this->request->is(['patch', 'post', 'put'])){
+
+            
+            if(empty($this->request->data['imagen']['name'])){
+                
+                if($user_data->imagen != ''){
+                    $this->request->data['imagen'] = $user_data->imagen;
+                }
+
+            }else{
+                                       
+                if($this->request->data['imagen']['type'] == ('image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif')){
+                    
+                    $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                    
+                    $ext = substr(strtolower(strrchr($this->request->data['imagen']['name'], '.')), 1);
+                    $nuevoNombre = uniqid();
+
+                    if($this->request->data['imagen']['type'] === 'image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif'){
+                        if(move_uploaded_file($this->request->data['imagen']['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
+                            $this->request->data['imagen'] = $nuevoNombre.'.'.$ext;
+                            unlink($destino.$user_data->imagen);
+                        }
+                    }else{
+                        $this->Flash->error(__('Error, al subir imagen. Por favor intentá nuevamente.'));
+                        return $this->redirect(['action' => 'agregar']);
+                    }
+
+
+                }else{
+                    $this->Flash->error(__('El archivo subido para logo no es un formato de imagen aceptado. Por favor, intentá nuevamente.'));
+                    return $this->redirect(['action' => 'agregar']);
+                }
+            }
+
             $data = $this->request->data;
-            if($data['nuevo_pass'] === $data['repetir_pass']){
-            $user = $this->Users->patchEntity($user_data, 
+            
+            if (!empty($data['nuevo_pass']) && !empty($data['repetir_pass'])) {
+                if($data['nuevo_pass'] === $data['repetir_pass']){
+                    $user = $this->Users->patchEntity($user_data, 
                         ['password' => $this->request->data['nuevo_pass'],
                         'nuevo_pass' => '']);
+                }else{
+                    $this->Flash->error('Las Contraseñas no coinciden, intente nuevamente.');
+                }
+                
+            }else{
+                $user = $this->Users->patchEntity($user_data, $this->request->data);
+            }
+
             if ($this->Users->save($user)) {
-                $this->Flash->success('Contraseña cambiada con exito!');
+                $this->Flash->success('Se modificaron los datos correctamente.');
+                if ($this->Auth->user('id') === $user->id) {
+                    $data = $user->toArray();
+                    unset($data['password']);
+                    $this->Auth->setUser($data);
+                }
                  return $this->redirect([
                     'controller' => 'Pages',
                     'action' => 'dashboard'
@@ -95,9 +209,7 @@ class UsersController extends AppController{
             }else{
                 $this->Flash->error('Ocurrio un error y no se ha guardado.');
             } 
-        }else{
-            $this->Flash->error('Las Contraseñas no coinciden, intente nuevamente.');
-        }
+
         }
 
         $this->set(compact('user_data'));

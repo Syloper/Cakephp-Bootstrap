@@ -1,6 +1,4 @@
-<?php //$d_categorias = '/img/categorias/'; ?>
-<?php //$d_iconos     = '/img/iconos/'; ?>
-
+<?php $usuario = $this->request->session()->read('Auth.User'); ?>
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">Lista de usuarios</h3>
@@ -27,6 +25,8 @@
 				<tr>
 					<th></th>
 					<th><?php echo $this->Paginator->sort('id', 'ID'); ?></th>
+					<th><?php echo $this->Paginator->sort('nombre', 'Nombre'); ?></th>
+					<th><?php echo $this->Paginator->sort('apellido', 'Apellido'); ?></th>
 					<th><?php echo $this->Paginator->sort('email', 'E-Mail'); ?></th>
 					<th><?php echo $this->Paginator->sort('created', 'Creación'); ?></th>
 					<th>Acciones</th>
@@ -34,9 +34,12 @@
 
 				<?php foreach($users as $c): ?>
 
+				<?php if($c->id == $usuario['id']){ continue; } ?>
 				<tr>
 					<td></td>
 					<td><?= $this->Number->format($c->id) ?></td>
+					<td><?= h($c->nombre) ?></td>
+					<td><?= h($c->apellido) ?></td>
 					<td><?= h($c->email) ?></td>
 					<td><?= h($c->created) ?></td>
 					<td>

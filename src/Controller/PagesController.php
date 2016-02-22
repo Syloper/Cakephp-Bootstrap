@@ -35,7 +35,13 @@ class PagesController extends AppController{
     }
 
     public function dashboard(){
-        // Logica de pantalla de inicio
+        $this->loadModel('Users');
+        
+        $c_users = $this->Users->find('all');
+        $n_users = $c_users->count();
+
+        $this->set(compact('n_users'));
+        $this->set('_serialize', ['n_users']);
     }
 
     public function buscar(){

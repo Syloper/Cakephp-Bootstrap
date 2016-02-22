@@ -87,7 +87,7 @@
 
               <div class="user-panel">
                 <div class="pull-left image">
-                  <?php echo $this->Html->image($usuario['imagen'], ['alt' => 'Imagen de usuario', 'class' => 'img-circle']); ?>
+                  <?php echo $this->Html->image('perfiles/'.$usuario['imagen'], ['alt' => 'Imagen de usuario | '.$usuario["nombre"].' '.$usuario["apellido"].'', 'class' => 'img-circle']); ?>
                 </div>
                 <div class="pull-left info">
                   <p><?= $usuario['nombre'] ?> <?= $usuario['apellido'] ?></p>
