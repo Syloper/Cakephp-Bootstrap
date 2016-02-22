@@ -2,7 +2,7 @@
 
 <div class="login-box">
     <div class="login-logo">  
-        <a href="../../index2.html"><b>Cakephp Bootstrap</b></a>
+        <a href=""><b>Cakephp Bootstrap</b></a>
     </div>
     
     <div class="login-box-body">
