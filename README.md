@@ -3,11 +3,7 @@
 
 <h2>Incluye</h2>
 
-- CakePHP Framework versión 3.1.10
-<br />
-- CakePHP Framework versión 3.1.10
-<br />
-- CakePHP Framework versión 3.1.10
+El theme utilizado para esta version es el AdminLTE de <a href="https://almsaeedstudio.com/" target="_blank">Almsaeed Studio</a>. Podés entrar <a href="https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html" targer="_blank">áca para la documentación completa</a> o a su <a href="https://github.com/almasaeed2010/AdminLTE" target="_blank">repositorio en github</a>.
 
 <br /><br />
 
