@@ -19,6 +19,7 @@
       
       <?= $this->Html->css('/plugins/jvectormap/jquery-jvectormap-1.2.2.css') ?>
       <?= $this->Html->css('/plugins/datepicker/datepicker3.css') ?>
+      <?= $this->Html->css('/plugins/datetimepicker/bootstrap-datetimepicker.min.css') ?>
       <?= $this->Html->css('/plugins/daterangepicker/daterangepicker-bs3.css') ?>
       <?= $this->Html->css('/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>
       <?= $this->Html->css('/plugins/select2/select2.min.css') ?>
@@ -48,6 +49,8 @@
       <?= $this->Html->script('app.min.js') ?>
 
       <?= $this->fetch('script') ?>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+      <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
 
       <?= $this->fetch('meta') ?>
       <?= $this->fetch('css') ?>
@@ -74,7 +77,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                <?= $this->Html->link("<i class='fa fa-gears'></i>", ['controller' => 'Users' ,'action' => 'configuracion'], ['escapeTitle' => false]) ?>
+                                <?= $this->Html->link("<i class='fa fa-gears'></i>", ['controller' => 'Users' ,'action' => 'configuracion', 'plugin' => null], ['escapeTitle' => false]) ?>
                             </li>
                         </ul>
                     </div>
@@ -171,6 +174,7 @@
             $(function () {
 
               $(".select2").select2();
+              $('.datetimepicker1').datetimepicker();
 
             });
       </script>

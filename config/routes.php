@@ -23,17 +23,8 @@ use Cake\Routing\Router;
 Router::defaultRouteClass('DashedRoute');
 
 Router::scope('/', function ($routes) {
-    /**
-     * Here, we are connecting '/' (base path) to a controller called 'Pages',
-     * its action called 'display', and we pass a param to select the view file
-     * to use (in this case, src/Template/Pages/home.ctp)...
-     */
+    
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'dashboard']);
-
-    /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
-    //$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $routes->connect('/configuracion', ['controller' => 'Users', 'action' => 'configuracion']);
     $routes->connect('/buscar', ['controller' => 'Pages', 'action' => 'buscar']);
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
@@ -55,8 +46,10 @@ Router::scope('/', function ($routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+
     $routes->fallbacks('DashedRoute');
 });
+
 
 /**
  * Load all plugin routes.  See the Plugin documentation on
