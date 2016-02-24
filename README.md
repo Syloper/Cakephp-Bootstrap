@@ -1,5 +1,5 @@
 <h2># CakePHP + Bootstrap</h2>
---Cakep php 3.2
+-- Cakepphp 3.1.10
 <br /><br />
 
 <h2>Incluye</h2>
@@ -16,7 +16,7 @@ El theme utilizado para esta version es el AdminLTE de <a href="https://almsaeed
 <br />
 3 - Crear base de datos vacía
 <br />
-4 - Cambiar los permisos a 777 en linux recursivamente. (Ejemplo:  sudo chmod -R 777 /carpeta )
+4 - Cambiar los permisos a 777 en linux recursivamente a la carpetas <b>/tmp</b> y <b>/logs</b>. (Ejemplo:  sudo chmod -R 777 /carpeta )
 <br />
 5 - Cargar la url donde está alojado el directorio extraído.  (Ejemplo:  http://localhost/cakestrapEjemplo/)
 <br />

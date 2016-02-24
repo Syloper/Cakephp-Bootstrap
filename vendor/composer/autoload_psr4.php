@@ -17,6 +17,8 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Phinx\\' => array($vendorDir . '/robmorgan/phinx/src/Phinx'),
     'Migrations\\' => array($vendorDir . '/cakephp/migrations/src'),
+    'Gestor\\Test\\' => array($baseDir . '/plugins/Gestor/tests'),
+    'Gestor\\' => array($baseDir . '/plugins/Gestor/src'),
     'GCM\\Test\\' => array($baseDir . '/plugins/GCM/tests'),
     'GCM\\' => array($baseDir . '/plugins/GCM/src'),
     'DebugKit\\Test\\Fixture\\' => array($vendorDir . '/cakephp/debug_kit/tests/Fixture'),

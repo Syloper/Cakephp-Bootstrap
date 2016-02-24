@@ -1,0 +1,23 @@
+{
+    "name": "your-name-here/GCM",
+    "description": "GCM plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "GCM\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GCM\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}

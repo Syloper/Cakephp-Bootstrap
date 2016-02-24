@@ -23,14 +23,16 @@
     "autoload": {
         "psr-4": {
             "App\\": "src",
-            "GCM\\": "./plugins/GCM/src"
+            "GCM\\": "./plugins/GCM/src",
+            "Gestor\\": "./plugins/Gestor/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Test\\": "tests",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
-            "GCM\\Test\\": "./plugins/GCM/tests"
+            "GCM\\Test\\": "./plugins/GCM/tests",
+            "Gestor\\Test\\": "./plugins/Gestor/tests"
         }
     },
     "scripts": {
