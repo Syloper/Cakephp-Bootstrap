@@ -37,7 +37,7 @@
       <?= $this->Html->script('/plugins/input-mask/jquery.inputmask.extensions.js') ?>
 
       <?= $this->Html->script('http://maps.googleapis.com/maps/api/js?sensor=false') ?>
-      <?= $this->Html->script('/plugins/latlon-picker/jquery-gmaps-latlon-picker.js') ?>
+      <?php //$this->Html->script('/plugins/latlon-picker/jquery-gmaps-latlon-picker.js') ?>
             
       <?= $this->Html->script('/plugins/sparkline/jquery.sparkline.min.js') ?>
       <?= $this->Html->script('/plugins/knob/jquery.knob.js') ?>
@@ -46,6 +46,7 @@
       <?= $this->Html->script('/plugins/slimScroll/jquery.slimscroll.min.js') ?>
       <?= $this->Html->script('/plugins/fastclick/fastclick.min.js') ?>
       <?= $this->Html->script('/plugins/select2/select2.full.min.js') ?>
+      <?= $this->Html->script('preImagen.js') ?>
       <?= $this->Html->script('app.min.js') ?>
 
       <?= $this->fetch('script') ?>
@@ -171,12 +172,12 @@
       </script>
       
       <script>
-            $(function () {
+        $(function () {
 
-              $(".select2").select2();
-              $('.datetimepicker1').datetimepicker();
+          $(".select2").select2();
+          $('.datetimepicker1').datetimepicker();
 
-            });
+        });
       </script>
     </body>
 </html>

@@ -10,11 +10,8 @@ use Cake\Controller\Component\AuthComponent;
 
 class AppController extends BaseController{
 
-
     public function initialize(){
-
         parent::initialize();
-
         $this->loadComponent('RequestHandler');
     }
 
