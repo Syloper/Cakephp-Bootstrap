@@ -24,7 +24,9 @@ Router::defaultRouteClass('DashedRoute');
 
 Router::scope('/', function ($routes) {
     
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'dashboard']);
+    //$routes->connect('/', ['controller' => 'Pages', 'action' => 'dashboard']);
+    $routes->redirect('/', '/dashboard');
+    $routes->connect('/dashboard', ['controller' => 'Pages', 'action' => 'dashboard']);
     $routes->connect('/configuracion', ['controller' => 'Users', 'action' => 'configuracion']);
     $routes->connect('/buscar', ['controller' => 'Pages', 'action' => 'buscar']);
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
