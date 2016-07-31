@@ -34,26 +34,16 @@ class UsersController extends AppController{
             
             if(!empty($this->request->data['imagen']['name'])){
                 
-                if($this->request->data['imagen']['type'] == ('image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif')){
-                    
-                    $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
-                    
-                    $ext = substr(strtolower(strrchr($this->request->data['imagen']['name'], '.')), 1);
-                    $nuevoNombre = uniqid();
-
-                    if($this->request->data['imagen']['type'] === 'image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif'){
-                        if(move_uploaded_file($this->request->data['imagen']['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
-                            $this->request->data['imagen'] = $nuevoNombre.'.'.$ext;
-                        }
-                    }else{
-                        $this->Flash->error(__('Error, al subir imagen. Por favor intentá nuevamente.'));
-                        return $this->redirect(['action' => 'agregar']);
-                    }
-
-                }else{
-                    $this->Flash->error(__('El archivo subido para logo no es un formato de imagen aceptado. Por favor, intentá nuevamente.'));
+                $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                //la funcion imagenes va a guardar la nueva imagen y borrar la anterior, devuelve el nuevo nombre.
+                $valor = $this->imagenes($this->request->data['imagen'], $destino, 'agregar');
+                if(!$valor){
+                    $this->Flash->error(__('Error al procesar la imagen. intente nuevamente.'));
                     return $this->redirect(['action' => 'agregar']);
                 }
+
+            }else{
+                $this->request->data['imagen'] = "lemmy.jpg";
             }
 
             $data = $this->request->data;
@@ -83,28 +73,12 @@ class UsersController extends AppController{
                 }
 
             }else{
-                                       
-                if($this->request->data['imagen']['type'] == ('image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif')){
-                    
-                    $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
-                    
-                    $ext = substr(strtolower(strrchr($this->request->data['imagen']['name'], '.')), 1);
-                    $nuevoNombre = uniqid();
-
-                    if($this->request->data['imagen']['type'] === 'image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif'){
-                        if(move_uploaded_file($this->request->data['imagen']['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
-                            $this->request->data['imagen'] = $nuevoNombre.'.'.$ext;
-                            unlink($destino.$user->imagen);
-                        }
-                    }else{
-                        $this->Flash->error(__('Error, al subir imagen. Por favor intentá nuevamente.'));
-                        return $this->redirect(['action' => 'add']);
-                    }
-
-
-                }else{
-                    $this->Flash->error(__('El archivo subido para logo no es un formato de imagen aceptado. Por favor, intentá nuevamente.'));
-                    return $this->redirect(['action' => 'add']);
+                 $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                //la funcion imagenes va a guardar la nueva imagen y borrar la anterior, devuelve el nuevo nombre.
+                $valor = $this->imagenes($this->request->data['imagen'], $destino, 'editar', $user->imagen);
+                if(!$valor){
+                    $this->Flash->error(__('Error al procesar la imagen. intente nuevamente.'));
+                    return $this->redirect(['action' => 'editar', $user->id]);
                 }
             }
 
@@ -124,6 +98,10 @@ class UsersController extends AppController{
     public function eliminar($id = null){
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
+        if($user->imagen != "lemmy.jpg"){
+            $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+            unlink($destino.$user->imagen);
+        }
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('El usuario se elimino con exito.'));
         } else {
@@ -139,14 +117,9 @@ class UsersController extends AppController{
     public function configuracion(){
 
         $user_data = $this->Users->get($this->Auth->user()['id']);
-        
-
-        /*debug($user_data);
-        debug($user_data->imagen);
-        exit();*/
 
         if($this->request->is(['patch', 'post', 'put'])){
-
+            // debug($this->request->data); exit;
             
             if(empty($this->request->data['imagen']['name'])){
                 
@@ -156,28 +129,14 @@ class UsersController extends AppController{
 
             }else{
                                        
-                if($this->request->data['imagen']['type'] == ('image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif')){
-                    
-                    $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
-                    
-                    $ext = substr(strtolower(strrchr($this->request->data['imagen']['name'], '.')), 1);
-                    $nuevoNombre = uniqid();
-
-                    if($this->request->data['imagen']['type'] === 'image/jpg' || 'image/jpeg' || 'image/png' || 'image/gif'){
-                        if(move_uploaded_file($this->request->data['imagen']['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
-                            $this->request->data['imagen'] = $nuevoNombre.'.'.$ext;
-                            unlink($destino.$user_data->imagen);
-                        }
-                    }else{
-                        $this->Flash->error(__('Error, al subir imagen. Por favor intentá nuevamente.'));
-                        return $this->redirect(['action' => 'agregar']);
-                    }
-
-
-                }else{
-                    $this->Flash->error(__('El archivo subido para logo no es un formato de imagen aceptado. Por favor, intentá nuevamente.'));
-                    return $this->redirect(['action' => 'agregar']);
+                $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                //la funcion imagenes va a guardar la nueva imagen y borrar la anterior, devuelve el nuevo nombre.
+                $valor = $this->imagenes($this->request->data['imagen'], $destino, 'configuracion', $user_data->imagen);
+                if(!$valor){
+                    $this->Flash->error(__('Error al procesar la imagen. intente nuevamente.'));
+                    return $this->redirect(['action' => 'configuracion']);
                 }
+                
             }
 
             $data = $this->request->data;
@@ -264,6 +223,38 @@ class UsersController extends AppController{
                         return $this->redirect($this->Auth->redirectUrl());
                     }
                 }
+            }
+        }
+    }
+
+
+    private function imagenes($imagen, $destino, $remite, $imagenAnt = null)
+    {
+        if (!empty($imagen['name'])) {
+            $formatos = array('image/jpg', 'image/jpeg', 'image/png', 'image/gif');
+            if (in_array($imagen['type'], $formatos)) {
+
+                // $respuesta = array();
+
+                if($remite == "editar" || $remite == "configuracion"){
+                    if($imagenAnt != "lemmy.jpg"){
+                        unlink($destino.$imagenAnt);
+                    }
+                }
+
+                $ext = substr(strtolower(strrchr($imagen['name'], '.')), 1);
+                $nuevoNombre = uniqid();
+
+                if(move_uploaded_file($imagen['tmp_name'], $destino.$nuevoNombre.'.'.$ext)){
+                    $imagen = $nuevoNombre.'.'.$ext;
+                    // $respuesta['estado'] = true;
+                    $this->request->data['imagen'] = $imagen;
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
             }
         }
     }

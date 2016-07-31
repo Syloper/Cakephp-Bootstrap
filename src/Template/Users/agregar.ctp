@@ -33,6 +33,10 @@
                 <label for="email" class="col-sm-2 control-label">Imagen</label>
                 <div class="col-sm-10">
                     <?php echo $this->Form->input('imagen', ['class' => 'form-control', 'label' => false, 'type' => 'file']); ?>
+                    <div id="vista_imagen" style="display:none;">
+                        <div class="divImagen" style="float:left; background:url()no-repeat center center / cover; width:200px; height:200px;"></div>
+                        <div style="float:left;" class="infoDiv"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,3 +45,16 @@
         </div>
     <?= $this->Form->end() ?>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#imagen").on('change', function(){
+        $('#vista_imagen').css('display', 'block');
+    });
+
+  $.preImagen({
+    input   : "#imagen",
+    imgDiv  : ".divImagen",
+    infDiv  : ".infoDiv"
+  });
+});
+</script>
