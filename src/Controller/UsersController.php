@@ -43,7 +43,10 @@ class UsersController extends AppController{
                 }
 
             }else{
-                $this->request->data['imagen'] = "lemmy.jpg";
+                $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
+                if(copy(WWW_ROOT.'img'.DS.'default.png', $destino.'default.png')){
+                    $this->request->data['imagen'] = "default.png";
+                }
             }
 
             $data = $this->request->data;
@@ -98,7 +101,7 @@ class UsersController extends AppController{
     public function eliminar($id = null){
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
-        if($user->imagen != "lemmy.jpg"){
+        if($user->imagen != "default.png"){
             $destino = WWW_ROOT.'img'.DS.'perfiles'.DS;
             unlink($destino.$user->imagen);
         }
@@ -237,7 +240,7 @@ class UsersController extends AppController{
                 // $respuesta = array();
 
                 if($remite == "editar" || $remite == "configuracion"){
-                    if($imagenAnt != "lemmy.jpg"){
+                    if($imagenAnt != "default.png"){
                         unlink($destino.$imagenAnt);
                     }
                 }

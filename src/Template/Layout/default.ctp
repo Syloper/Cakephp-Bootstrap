@@ -177,6 +177,13 @@
           $(".select2").select2();
           $('.datetimepicker1').datetimepicker();
 
+
+          /* Resalta de Rojo un error en input */
+          if($(".input").hasClass("error")){
+            $(".error").parent().parent().addClass('has-error');
+            $(".error-message").css('color', '#dd4b39');
+          }
+
         });
       </script>
     </body>

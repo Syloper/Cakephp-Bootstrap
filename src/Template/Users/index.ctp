@@ -44,7 +44,7 @@
 					<td><?= h($c->created) ?></td>
 					<td>
                         <?= $this->Html->link(null, ['action' => 'editar', $c->id], ['class' => 'fa fa-pencil']) ?> |
-                        <?= $this->Form->postLink(null, ['action' => 'elimiar', $c->id], ['class' => 'fa fa-trash', 'confirm' => __('¿Seguro que desea eliminar el usuario con email {0}?', $c->email)]) ?>
+                        <?= $this->Form->postLink(null, ['action' => 'eliminar', $c->id], ['class' => 'fa fa-trash', 'confirm' => __('¿Seguro que desea eliminar el usuario con email {0}?', $c->email)]) ?>
 					</td>
 				</tr>
 

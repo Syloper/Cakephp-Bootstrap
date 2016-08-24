@@ -1,4 +1,3 @@
-<?php //debug($user_data);die(); ?>
 <?php $perfiles = '/Cakephp-Bootstrap/img/perfiles/'; ?>
 <div class="box box-default">
     <div class="box-header with-border">
